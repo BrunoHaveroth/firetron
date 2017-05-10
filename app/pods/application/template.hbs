@@ -1,0 +1,77 @@
+{{application-navbar db=db}}
+
+<div class="container-fluid mimin-wrapper">
+  {{application-sidebar
+    tables=tables}}
+  {{#if db}}
+    <div id="content">
+      <div class="col-md-12">
+        <div class="panel panel-default">
+          <div class="panel-heading">
+            <h4 class="pull-left">Insira sua query abaixo</h4>
+
+            <button type="button" class="btn btn-info pull-right" {{action 'execQuery' queryString}}>EXECUTAR</button>
+            <div class="clearfix"></div>
+          </div>
+          <div class="panel-body">
+            <div class="form-group form-animate-text">
+              {{textarea type="text" class="form-text" value=queryString}}
+              <span class="bar"></span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-md-12">
+        {{#if string-view}}
+          <div class="panel panel-default">
+            <div class="panel-heading">
+              <h4>Resultado</h4>
+            </div>
+            <div class="panel-body">
+              <div class="form-group form-animate-text">
+                {{textarea type="text" class="form-text" disabled=true value=stringResultQuery}}
+                <span class="bar"></span>
+              </div>
+            </div>
+          </div>
+        {{/if}}
+
+        {{#if table-view}}
+          <div class="panel panel-default">
+            <div class="panel-heading">
+              <h4>Resultados para {{currentTableName}} ({{if tableLines.length tableLines.length 0}})</h4>
+            </div>
+            <div class="panel-body">
+              <div class="table-responsive table-client">
+                <table class="table table-bordered table-hover table-striped">
+                  <thead>
+                    <tr>
+                      {{#each tableHeader as |headerItem|}}
+                        <td {{action 'copyText' headerItem}}>{{headerItem}}</td>
+                      {{/each}}
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {{#each tableLines as |tableLine|}}
+                      <tr>
+                        {{#each tableLine as |tableColumn|}}
+                          <td {{action 'copyText' tableColumn}}>{{tableColumn}}</td>
+                        {{/each}}
+                      </tr>
+                    {{/each}}
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+        {{/if}}
+      </div>
+    </div>
+  {{/if}}
+</div>
+
+{{modal-connect
+  tables=tables
+  db=db
+  openModal=openModalConnect}}
