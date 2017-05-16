@@ -1,0 +1,22 @@
+<div class="container-modal container-modal-history">
+  <div class="col-md-8 col-md-offset-2 content-modal">
+    <button class="btn-close-modal fa fa-times" {{action 'closeModal'}}></button>
+
+    <div class="section-connections">
+      <h2 class="modal-title">Histórico</h2>
+
+      <div class="container-queries">
+        <div class="queries-scroll">
+          {{#each firestore.history as |history|}}
+            <div class="query-item">
+              <div class="query-body">
+                {{history.text}}
+              </div>
+              <button class="btn-copy fa fa-copy" {{action 'copyText' history.text}}></button>
+            </div>
+          {{/each}}
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

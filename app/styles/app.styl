@@ -1,9 +1,57 @@
 @import 'functions'
+@import 'general'
 
-#content
-  margin-top 80px !important
+.section-connections
+  .container-connections
+    .connection-scroll
+      max-height 385px
+      overflow-y auto
+      .connection-item
+        background #eee
+        padding 10px 20px
+        box-shadow 0px 0px 2px 0px rgba(121, 121, 121, 0.7)
+        margin-top 5px
+        margin-bottom 5px
+        cursor pointer
+        position relative
+        .btn-connection
+          position absolute
+          color #fff
+          right -30px
+          width 30px
+          opacity 0
+          transition all 0.7s ease
+          border-left 0px
+          border 0px
+          outline none
+        .connect-connection
+          height 70%
+          top 0px
+          background #6ed097
+          border-top-right-radius 10px
+        .delete-connection
+          height 30%
+          bottom 0px
+          background #ff7373
+          border-bottom-right-radius 10px
+        &:hover
+          background #e9f0f3
+          .btn-connection
+            opacity 1
+    .add-connection
+      cursor pointer
+      margin-top 20px
+      background none !important
+      border 1px #bbb7b7 dashed
+      box-shadow none !important
+      border-radius 3px
+      h5
+        text-align center
+        color #bbb7b7
+        font-weight 300
+        letter-spacing 1px
 
-.container-modal
+.container-modal-connect
   position fixed
   top 0px
   left 0px
@@ -15,7 +63,7 @@
   transition visibility 0.3s ease
   .content-modal
     background #fff
-    padding 20px
+    padding 20px 0px
     border-radius 0px 0px 10px 10px
     border 1px #636363 solid
     border-top 0px
@@ -26,7 +74,7 @@
     .modal-title
       padding 20px 0 10px 0
       font-size 2.25em
-      margin-bottom 60px
+      margin-bottom 30px
       position relative
       text-align center
       color #5b5c5d
@@ -66,8 +114,47 @@
 
 .navbar
   .btn-refresh
-    position absolute
-    right 10px
+    position relative
+    float right
     padding 8px 12px
     border-radius 3px
-    centralizeY()
+    margin-left 5px
+    margin-top 10px
+
+.queries-scroll
+  max-height 385px
+  overflow-y auto
+  .query-item
+    background #eee
+    padding 10px
+    width 90%
+    left 5%
+    box-shadow 0px 0px 2px 0px rgba(121, 121, 121, 0.7)
+    margin-top 5px
+    margin-bottom 5px
+    cursor pointer
+    font-size 17px
+    position relative
+    .query-body
+      position relative
+      width 100%
+      overflow-x auto
+    .btn-copy
+      position absolute
+      color #fff
+      right -30px
+      width 30px
+      opacity 0
+      transition all 0.7s ease
+      border-left 0px
+      border 0px
+      outline none
+      height 100%
+      top 0px
+      background #6ed097
+      border-top-right-radius 10px
+      border-bottom-right-radius 10px
+    &:hover
+      background #e9f0f3
+      .btn-copy
+        opacity 1

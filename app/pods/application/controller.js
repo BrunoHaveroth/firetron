@@ -1,5 +1,4 @@
 import Ember from 'ember';
-var Firebird = require('node-firebird');
 var _ = require('lodash');
 
 export default Ember.Controller.extend({
@@ -32,9 +31,13 @@ export default Ember.Controller.extend({
         });
 
         _this.set('tables', result);
-        _this.set('db', db);
-        _this.set('openModal', false);
       });
+    },
+
+    disconnect: function() {
+      this.set('db', null);
+      this.set('tables', null);
+      this.set('openModalConnect', true);
     },
 
     copyText: function(text) {

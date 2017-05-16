@@ -1,0 +1,66 @@
+#content
+  margin-top 80px !important
+.navbar
+  background #279aa0 !important
+/** Application modal **/
+.container-modal
+  position fixed
+  top 0px
+  left 0px
+  width 100%
+  height 100%
+  background rgba(0, 0, 0, 0.7)
+  z-index 9999
+  visibility hidden
+  transition visibility 0.3s ease
+  .content-modal
+    position relative
+    background #fff
+    padding 20px 0px
+    border-radius 0px 0px 10px 10px
+    border 1px #636363 solid
+    border-top 0px
+    transition transform 0.3s ease
+    -ms-transform translateY(-100%)
+    -webkit-transform translateY(-100%)
+    transform translateY(-100%)
+    .btn-close-modal
+      position absolute
+      right 10px
+      top 10px
+      font-size 17px
+      width 30px
+      height 30px
+      outline none
+      border 0px
+      background none
+    .modal-title
+      padding 20px 0 10px 0
+      font-size 2.25em
+      margin-bottom 30px
+      position relative
+      text-align center
+      color #5b5c5d
+      border-bottom 1px #333 solid
+      padding-bottom 15px
+      display table
+      width 50%
+      centralizeX()
+      &:after
+        position absolute
+        font-family 'FontAwesome'
+        font-size 35px
+        content "\f107"
+        left 48%
+        bottom -28px
+        color #073a63
+        background-color #ffffff
+        padding 0px 8px
+
+.open-modal
+  visibility visible
+  .content-modal
+    -ms-transform translateY(0%)
+    -webkit-transform translateY(0%)
+    transform translateY(0%)
+/** Application modal **/

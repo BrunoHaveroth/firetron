@@ -1,0 +1,21 @@
+<div class="panel panel-default">
+  <div class="panel-heading">
+    <h4 class="pull-left">Insira sua query abaixo</h4>
+
+    <button type="button" class="btn btn-info pull-right" {{action 'execQuery' queryString}}>
+      EXECUTAR
+    </button>
+
+    <button type="button" class="btn btn-default pull-right" {{action 'openHistory'}}>
+      <i class="fa fa-history" aria-hidden="true"></i>
+    </button>
+
+    <div class="clearfix"></div>
+  </div>
+  <div class="panel-body">
+    <div class="form-group form-animate-text">
+      {{textarea type="text" class="form-text" value=queryString}}
+      <span class="bar"></span>
+    </div>
+  </div>
+</div>

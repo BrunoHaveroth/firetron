@@ -1,50 +1,88 @@
-<div class="container-modal modal-admin-register {{if openModal 'open-modal'}}">
+<div class="container-modal {{if openModal 'open-modal'}}">
   <div class="col-md-6 col-md-offset-3 content-modal">
+    {{#if tabListConnections}}
+      <div class="section-connections">
+        <h2 class="modal-title">Connections</h2>
 
-    <h2 class="modal-title">Conectar</h2>
+        <div class="container-connections">
+          <div class="connection-scroll">
+            {{#each firestore.connections as |connection|}}
+              <div class="col-md-8 col-md-offset-2 connection-item">
+                <div class="content-item">
+                  <h4><b>Name:</b> {{connection.name}}</h4>
+                  <h5><b>Port:</b> {{connection.port}}</h5>
+                  <h5><b>Host:</b> {{connection.host}}</h5>
+                </div>
+                <button class="btn-connection connect-connection fa fa-plug" {{action 'connect' connection}}></button>
+                <button class="btn-connection delete-connection fa fa-trash" {{action 'removeConnection' connection}}></button>
+              </div>
+            {{/each}}
+            <div class="col-md-8 col-md-offset-2 connection-item add-connection" {{action 'setTab' 'tabNewConnect'}}>
+              <h5>ADD CONNECTION</h5>
+            </div>
+          </div>
+        </div>
+      </div>
+    {{/if}}
 
-    <div class="col-md-8 col-md-offset-2">
-      <div class="col-md-8">
-        <div class="form-group form-animate-text">
-          {{input type="text" class="form-text" value=dbHost required=true}}
-          <span class="bar"></span>
-          <label>Host</label>
-        </div>
-      </div>
-      <div class="col-md-4">
-        <div class="form-group form-animate-text">
-          {{input type="text" class="form-text" value=dbPort required=true}}
-          <span class="bar"></span>
-          <label>Porta</label>
-        </div>
-      </div>
-      <div class="col-md-6">
-        <div class="form-group form-animate-text">
-          {{input type="text" class="form-text" value=dbUser required=true}}
-          <span class="bar"></span>
-          <label>User</label>
-        </div>
-      </div>
-      <div class="col-md-6">
-        <div class="form-group form-animate-text">
-          {{input type="password" class="form-text" value=dbPassword required=true}}
-          <span class="bar"></span>
-          <label>Senha</label>
-        </div>
-      </div>
+    {{#if tabNewConnect}}
+      <div class="section-new-connect">
+        <h2 class="modal-title">New Connection</h2>
 
-      <div class="col-md-12 input-choose">
-        <div class="form-group form-animate-text">
-          {{input type="text" class="form-text" value=dbPath required=true}}
-          <span class="bar"></span>
-          <label>Caminho do Banco</label>
-        </div>
-        <button class="btn-success btn-choose" name="button" {{action 'openDbPath'}}>SELECIONAR</button>
-      </div>
+        <div class="col-md-8 col-md-offset-2">
+          <div class="col-md-12">
+            <div class="form-group form-animate-text">
+              {{input type="text" class="form-text" value=dbName required=true}}
+              <span class="bar"></span>
+              <label>Name</label>
+            </div>
+          </div>
+          <div class="col-md-8">
+            <div class="form-group form-animate-text">
+              {{input type="text" class="form-text" value=dbHost required=true}}
+              <span class="bar"></span>
+              <label>Host</label>
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="form-group form-animate-text">
+              {{input type="text" class="form-text" value=dbPort required=true}}
+              <span class="bar"></span>
+              <label>Port</label>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="form-group form-animate-text">
+              {{input type="text" class="form-text" value=dbUser required=true}}
+              <span class="bar"></span>
+              <label>User</label>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="form-group form-animate-text">
+              {{input type="password" class="form-text" value=dbPassword required=true}}
+              <span class="bar"></span>
+              <label>Password</label>
+            </div>
+          </div>
 
-      <div class="form-group form-animate-text">
-        <button type="button" class="btn btn-info pull-right" {{action 'connectDB'}}>Conectar</button>
+          <div class="col-md-12 input-choose">
+            <div class="form-group form-animate-text">
+              {{input type="text" class="form-text" value=dbPath required=true}}
+              <span class="bar"></span>
+              <label>Database Path</label>
+            </div>
+            <button class="btn-success btn-choose" name="button" {{action 'openDbPath'}}>SELECT</button>
+          </div>
+
+          <div class="form-group form-animate-text">
+            <button type="button" class="btn btn-info pull-right" {{action 'saveNewConnection'}}>Save</button>
+          </div>
+          <div class="form-group form-animate-text">
+            <button type="button" class="btn btn-danger pull-right" {{action 'setTab' 'tabListConnections'}}>Cancel</button>
+          </div>
+        </div>
       </div>
-    </div>
+    {{/if}}
   </div>
 </div>
